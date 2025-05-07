@@ -9,15 +9,18 @@ playBtn.addEventListener("click", () => {
   if (isPlaying) {
     music.pause();
     playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+    playBtn.classList.remove('playing');
   } else {
     music.play();
     playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+    playBtn.classList.add('playing');
   }
   isPlaying = !isPlaying;
 });
 
 music.addEventListener("ended", () => {
   playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+  playBtn.classList.remove('playing');
   isPlaying = false;
 });
 
