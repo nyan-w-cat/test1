@@ -2,10 +2,10 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>최원제 | Dev Intro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>최원제 | Dev Portfolio</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-a/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" rel="stylesheet" />
 </head>
 <body>
@@ -19,19 +19,15 @@
     </nav>
   </aside>
 
-  <!-- 음악 플레이어 -->
-  <div class="music-bar">
-    <audio id="bg-music" autoplay loop muted>
-      <source src="welcome.mp3" type="audio/mpeg" />
-    </audio>
-    <button id="music-btn">🔊</button>
-    <span>🎧 지금 듣는 중...</span>
+  <!-- 애니메이션 시작 화면 -->
+  <div class="intro">
+    <img src="images/profile.jpg" class="intro-image" alt="최원제 프로필" />
   </div>
 
-  <!-- 메인 -->
+  <!-- 메인 콘텐츠 -->
   <main class="content">
     <section class="profile-card" id="about">
-      <img src="profile.jpg" class="avatar" alt="최원제 프로필" />
+      <img src="images/profile.jpg" class="avatar" alt="최원제" />
       <div>
         <h1>최원제 <span class="cursor">▍</span></h1>
         <p>Python을 배우고 있고, 음악과 개발을 사랑합니다.</p>
@@ -39,7 +35,7 @@
     </section>
 
     <section class="card" id="skills">
-      2>현재 배우는 언어</h2>
+      <h2>현재 배우는 언어</h2>
       <div class="icons">
         <i class="devicon-python-plain colored"></i>
       </div>
@@ -54,4 +50,22 @@
     <section class="card" id="contact">
       <h2>Contact</h2>
       <p>Email: your@email.com</p>
-      <
+      <p>GitHub: github.com/yourname</p>
+    </section>
+  </main>
+
+  <!-- 재생바 -->
+  <div class="player-bar">
+    <audio id="bg-music" loop>
+      <source src="music/your-music.mp3" type="audio/mpeg" />
+    </audio>
+    <div class="controls">
+      <button id="play-btn"><i class="fas fa-play"></i></button>
+      <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" />
+    </div>
+    <div class="track-info">🎧 Lo-Fi Beats - Dev Mood</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
