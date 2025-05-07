@@ -1,56 +1,86 @@
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(180deg, #1e1e2f, #2d2d4d);
-  color: #fff;
-  line-height: 1.6;
+  font-family: 'Fira Code', monospace;
+  background-color: #0d1117;
+  color: #c9d1d9;
   scroll-behavior: smooth;
 }
 
-section {
-  padding: 80px 20px;
-  max-width: 800px;
+main {
+  max-width: 900px;
   margin: auto;
-  text-align: center;
+  padding: 60px 20px;
 }
 
-h1, h2 {
-  margin-bottom: 20px;
-  color: #ffd369;
+.hero {
+  text-align: center;
 }
 
 .profile-img {
-  width: 150px;
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
   border-radius: 50%;
+  border: 3px solid #1f6feb;
   margin-bottom: 20px;
-  border: 4px solid #ffd369;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
+h1 {
+  font-size: 2.5rem;
+  color: #58a6ff;
 }
 
-li {
-  margin: 10px 0;
+.cursor {
+  color: #58a6ff;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+h2 {
+  color: #58a6ff;
+  border-left: 4px solid #58a6ff;
+  padding-left: 10px;
+  margin-bottom: 20px;
+}
+
+.section {
+  margin-top: 60px;
+}
+
+.icon-row {
+  font-size: 3rem;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.about p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #a8b2d1;
 }
 
 footer {
-  padding: 40px 20px;
   text-align: center;
-  background-color: #111;
-  color: #aaa;
+  padding: 40px;
+  background-color: #161b22;
+  color: #8b949e;
+  margin-top: 60px;
 }
 
 #music-btn {
   position: fixed;
   top: 20px;
   right: 20px;
-  background: #ffd369;
+  background: #1f6feb;
   border: none;
   padding: 10px 15px;
-  border-radius: 8px;
-  cursor: pointer;
-  z-index: 999;
+  color: white;
   font-weight: bold;
+  border-radius: 8px;
+  z-index: 999;
+  cursor: pointer;
 }
