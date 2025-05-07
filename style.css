@@ -201,6 +201,26 @@ h1 {
 .play-btn:hover {
   background: #1ed760;
 }
+.progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 360px;
+  margin-top: 8px;
+}
+#progress-bar {
+  flex: 1;
+  accent-color: #1db954;
+  height: 4px;
+  border-radius: 2px;
+  background: #333;
+}
+#current-time, #total-time {
+  color: #b3b3b3;
+  font-size: 0.95rem;
+  width: 44px;
+  text-align: center;
+}
 .bar-right {
   min-width: 160px;
   gap: 14px;
