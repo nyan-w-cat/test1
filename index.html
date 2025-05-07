@@ -5,7 +5,24 @@
   <title>최원제</title>
   <!-- 예쁜 한글 폰트 적용 -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Devicon 아이콘 스타일 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* 아이콘 크게! */
+    .lang-icons {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      margin: 24px 0;
+    }
+    .lang-icons i {
+      font-size: 56px;
+      /* SVG 아이콘도 대응 */
+      width: 56px;
+      height: 56px;
+    }
+  </style>
 </head>
 <body>
   <!-- 프로필 인트로 애니메이션 -->
@@ -21,19 +38,19 @@
     <h1>최원제</h1>
     <p>Python을 배우고 있고, 음악과 개발을 사랑합니다.</p>
     <h2>현재 배우는 언어</h2>
-    <ul>
-      <li>Python</li>
-    </ul>
+    <div class="lang-icons">
+      <i class="devicon-python-plain colored" title="Python"></i>
+    </div>
     <h2>관심 있는 언어</h2>
-    <ul>
-      <li>JavaScript</li>
-      <li>TypeScript</li>
-      <li>Go</li>
-    </ul>
+    <div class="lang-icons">
+      <i class="devicon-javascript-plain colored" title="JavaScript"></i>
+      <i class="devicon-typescript-plain colored" title="TypeScript"></i>
+      <i class="devicon-go-plain colored" title="Go"></i>
+    </div>
     <h2>Contact</h2>
     <ul>
-      <li>Email: your@email.com</li>
-      <li>GitHub: github.com/yourname</li>
+      <li>Email: <a href="mailto:wonje@kookmin.ac.kr">wonje@kookmin.ac.kr</a></li>
+      <li>GitHub: <a href="https://github.com/nyan-w-cat/test1" target="_blank">github.com/nyan-w-cat/test1</a></li>
     </ul>
     <h2>🎧 Lo-Fi Beats - Dev Mood</h2>
   </main>
