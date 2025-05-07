@@ -8,7 +8,7 @@ btn.addEventListener("click", () => {
   music.play();
   btn.textContent = "음악 끄기 🔇";
 
-  btn.removeEventListener("click", arguments.callee); // 한 번만 작동
+  btn.removeEventListener("click", arguments.callee); // 첫 클릭만
   btn.addEventListener("click", () => {
     if (music.paused) {
       music.play();
