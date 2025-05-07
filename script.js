@@ -33,22 +33,32 @@ window.addEventListener("DOMContentLoaded", () => {
   }, 2700);
 });
 
-// 매트릭스 효과
-const canvas = document.getElementById('matrix-canvas');
+// 매트릭스 효과 (전체 배경)
+const canvas = document.getElementById('matrix-bg');
 if (canvas) {
-  const ctx = canvas.getContext('2d');
-  // 실제 픽셀 크기 맞추기
-  canvas.width = canvas.offsetWidth;
-  canvas.height = canvas.offsetHeight;
+  // 풀스크린 대응
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
 
-  // 0, 1만 사용
+  const ctx = canvas.getContext('2d');
   const alphabet = '01';
-  const fontSize = 22;
-  const columns = Math.floor(canvas.width / fontSize);
-  const drops = Array(columns).fill(1);
+  let fontSize = 22;
+  let columns, drops;
+
+  function setupMatrix() {
+    fontSize = Math.max(18, Math.floor(window.innerWidth / 70));
+    columns = Math.floor(window.innerWidth / fontSize);
+    drops = Array(columns).fill(1);
+  }
+  setupMatrix();
+  window.addEventListener('resize', setupMatrix);
 
   function drawMatrix() {
-    ctx.fillStyle = 'rgba(13, 17, 23, 0.16)';
+    ctx.fillStyle = 'rgba(13, 17, 23, 0.13)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     ctx.font = fontSize + "px 'Fira Code', monospace";
@@ -56,6 +66,15 @@ if (canvas) {
     for (let i = 0; i < drops.length; i++) {
       const text = alphabet[Math.floor(Math.random() * alphabet.length)];
       ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+      // 중앙 소개 영역과 겹치지 않도록 예외 처리
+      const centerStart = (window.innerWidth - 520) / 2;
+      const centerEnd = (window.innerWidth + 520) / 2;
+      const x = i * fontSize;
+      if (x > centerStart && x < centerEnd) {
+        // 중앙 블록 위는 그리지 않음
+        continue;
+      }
 
       if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
         drops[i] = 0;
