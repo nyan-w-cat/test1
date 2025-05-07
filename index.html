@@ -20,7 +20,7 @@
       <img src="profile.jpg" class="profile-thumb" alt="프로필 사진">
       <h1>최원제</h1>
     </div>
-    <p>안녕하세요, 현재 Python을 배우고 있는 대학생입니다.</p>
+    <p>안녕하세요, Python을 배우고 있는 학생입니다.</p>
     <h2>현재 배우는 언어</h2>
     <ul class="lang-list">
       <li><i class="fa-brands fa-python"></i> Python</li>
@@ -54,6 +54,11 @@
         <button class="ctrl-btn play-btn" id="play-btn"><i class="fa-solid fa-play"></i></button>
         <button class="ctrl-btn"><i class="fa-solid fa-forward-step"></i></button>
         <button class="ctrl-btn"><i class="fa-solid fa-repeat"></i></button>
+      </div>
+      <div class="progress-wrap">
+        <span id="current-time">0:00</span>
+        <input type="range" id="progress-bar" min="0" max="100" value="0">
+        <span id="total-time">0:00</span>
       </div>
     </div>
     <div class="bar-right">
