@@ -2,6 +2,9 @@
 const music = document.getElementById("bg-music");
 const playBtn = document.getElementById("play-btn");
 const volumeSlider = document.getElementById("volume-slider");
+const progressBar = document.getElementById("progress-bar");
+const currentTimeEl = document.getElementById("current-time");
+const totalTimeEl = document.getElementById("total-time");
 
 let isPlaying = false;
 
@@ -27,6 +30,30 @@ music.addEventListener("ended", () => {
 volumeSlider.addEventListener("input", (e) => {
   music.volume = e.target.value;
 });
+
+// 진행바 및 시간 표시
+music.addEventListener("timeupdate", () => {
+  if (music.duration) {
+    const percent = (music.currentTime / music.duration) * 100;
+    progressBar.value = percent;
+    currentTimeEl.textContent = formatTime(music.currentTime);
+    totalTimeEl.textContent = formatTime(music.duration);
+  }
+});
+
+// 진행바 클릭 시 이동
+progressBar.addEventListener("input", (e) => {
+  if (music.duration) {
+    music.currentTime = (e.target.value / 100) * music.duration;
+  }
+});
+
+function formatTime(sec) {
+  sec = Math.floor(sec);
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  return `${m}:${s < 10 ? '0' : ''}${s}`;
+}
 
 // 인트로 애니메이션 끝나면 intro 숨김
 window.addEventListener("DOMContentLoaded", () => {
