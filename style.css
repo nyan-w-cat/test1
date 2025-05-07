@@ -1,25 +1,52 @@
 body {
-  font-family: 'Noto Sans KR', 'Fira Code', monospace;
+  font-family: 'Fira Code', 'Noto Sans KR', monospace;
   background-color: #0d1117;
   color: #c9d1d9;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 .container {
-  max-width: 600px;
+  max-width: 900px;
   margin: 100px auto 120px auto;
   padding: 24px;
   background: rgba(24, 28, 36, 0.93);
   border-radius: 16px;
   box-shadow: 0 4px 32px rgba(0,0,0,0.3);
-  text-align: center;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
+.profile-section {
+  flex: 1;
+  min-width: 320px;
+}
+
+.matrix-section {
+  width: 220px;
+  min-width: 180px;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#matrix-canvas {
+  width: 100%;
+  height: 320px;
+  background: transparent;
+  display: block;
+  font-family: 'Fira Code', monospace;
 }
 
 .profile-row {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 16px;
   margin-bottom: 16px;
 }
@@ -44,10 +71,10 @@ h1 {
   margin: 16px 0 24px 0;
   display: flex;
   gap: 28px;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .lang-list li {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -82,34 +109,50 @@ h1 {
   to { opacity: 0; visibility: hidden; }
 }
 
-/* 오디오 플레이어 하단 고정, 심플하게 */
+/* 오디오 플레이어 하단 고정, 중앙 정렬 */
 .audio-player {
   position: fixed;
   left: 0; bottom: 0;
   width: 100%;
   background: #181c24;
   z-index: 999;
-  padding: 14px 0;
+  padding: 18px 0;
   box-shadow: 0 -2px 8px rgba(0,0,0,0.3);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 24px;
+  gap: 32px;
 }
 .audio-player button {
   background: none;
   border: none;
   color: #c9d1d9;
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   cursor: pointer;
   transition: color 0.2s;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .audio-player button:hover {
   color: #58a6ff;
+  background: #23272f;
+}
+.volume-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.volume-group i {
+  color: #58ff58;
+  font-size: 1.6rem;
 }
 .audio-player input[type="range"] {
   width: 120px;
-  accent-color: #58a6ff;
+  accent-color: #58ff58;
   height: 6px;
   border-radius: 3px;
   background: #2d333b;
