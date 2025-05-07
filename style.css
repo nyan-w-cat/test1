@@ -1,41 +1,9 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 body {
-  font-family: 'Fira Code', monospace;
+  font-family: 'Fira Code', 'Noto Sans KR', monospace;
   background-color: #0d1117;
   color: #c9d1d9;
   display: flex;
   overflow-x: hidden;
-}
-
-.sidebar {
-  width: 60px;
-  background-color: #161b22;
-  height: 100vh;
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px 0;
-  z-index: 10;
-}
-
-.sidebar .logo {
-  font-weight: bold;
-  font-size: 1.2rem;
-  color: #58a6ff;
-  margin-bottom: 20px;
-}
-
-.sidebar nav a {
-  color: #8b949e;
-  font-size: 1.4rem;
-  margin: 15px 0;
-  text-decoration: none;
 }
 
 .intro {
@@ -48,112 +16,30 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  animation: fadeOut 2.5s ease forwards 2s;
+  animation: fadeOut 2s ease forwards 2.5s;
 }
 
 .intro-image {
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  transition: all 1.2s ease;
-  animation: scaleDown 1.5s ease forwards 1s;
+  transition: transform 1.2s ease;
+  animation: introShrink 2s ease forwards 1s;
 }
 
-@keyframes fadeOut {
-  to { opacity: 0; visibility: hidden; }
-}
-
-@keyframes scaleDown {
-  to {
-    width: 60px;
-    height: 60px;
-    transform: translate(-200px, -200px) scale(0.5);
+@keyframes introShrink {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.3);
+    opacity: 0;
   }
 }
 
-.content {
-  margin-left: 60px;
-  padding: 100px 20px 80px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.profile-card {
-  display: flex;
-  align-items: center;
-  background-color: #161b22;
-  padding: 16px;
-  border-radius: 8px;
-  gap: 16px;
-}
-
-.avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: 2px solid #58a6ff;
-}
-
-h1 {
-  font-size: 1.4rem;
-  margin: 0;
-  color: #58a6ff;
-}
-
-.cursor {
-  animation: blink 1s steps(1) infinite;
-}
-
-@keyframes blink {
-  50% { opacity: 0; }
-}
-
-.card {
-  background-color: #161b22;
-  padding: 20px;
-  border-radius: 8px;
-}
-
-.icons {
-  font-size: 2rem;
-  display: flex;
-  gap: 12px;
-  margin: 10px 0;
-}
-
-.player-bar {
-  position: fixed;
-  bottom: 0;
-  left: 60px;
-  right: 0;
-  height: 60px;
-  background-color: #1f6feb;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-  z-index: 999;
-  font-size: 0.9rem;
-}
-
-.player-bar .controls {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-#play-btn {
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  color: white;
-  cursor: pointer;
-}
-
-#volume-slider {
-  width: 100px;
-  cursor: pointer;
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
