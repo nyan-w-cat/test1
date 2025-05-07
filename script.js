@@ -33,10 +33,9 @@ window.addEventListener("DOMContentLoaded", () => {
   }, 2700);
 });
 
-// 매트릭스 효과 (전체 배경)
+// 매트릭스 효과 (전체 배경, 소개 영역 제외)
 const canvas = document.getElementById('matrix-bg');
 if (canvas) {
-  // 풀스크린 대응
   function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -65,15 +64,16 @@ if (canvas) {
     ctx.fillStyle = "#58ff58";
     for (let i = 0; i < drops.length; i++) {
       const text = alphabet[Math.floor(Math.random() * alphabet.length)];
-      ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+      const x = i * fontSize;
+      const y = drops[i] * fontSize;
 
       // 중앙 소개 영역과 겹치지 않도록 예외 처리
       const centerStart = (window.innerWidth - 520) / 2;
       const centerEnd = (window.innerWidth + 520) / 2;
-      const x = i * fontSize;
-      if (x > centerStart && x < centerEnd) {
+      if (x > centerStart && x < centerEnd && y > 80 && y < window.innerHeight - 140) {
         // 중앙 블록 위는 그리지 않음
-        continue;
+      } else {
+        ctx.fillText(text, x, y);
       }
 
       if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
