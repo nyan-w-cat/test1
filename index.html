@@ -3,56 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>최원제 | 개발자 소개</title>
+  <title>최원제 | Dev Intro</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-a/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" rel="stylesheet" />
 </head>
 <body>
-  <audio id="bg-music" autoplay loop muted>
-    <source src="music/your-music.mp3" type="audio/mpeg" />
-  </audio>
-  <button id="music-btn">음악 켜기 🔊</button>
+  <!-- 사이드바 -->
+  <aside class="sidebar">
+    <div class="logo">WOJ</div>
+    <nav>
+      <a href="#about"><i class="fas fa-user"></i></a>
+      <a href="#skills"><i class="fas fa-code"></i></a>
+      <a href="#contact"><i class="fas fa-envelope"></i></a>
+    </nav>
+  </aside>
 
-  <main>
-    <section class="hero" data-aos="fade-up">
-      <img src="profile.jpg" alt="프로필 이미지" class="profile-img" />
-      <h1><span class="cursor">▍</span> 최원제</h1>
-      <p>개발과 음악을 사랑하는 예비 소프트웨어 엔지니어</p>
-    </section>
+  <!-- 음악 플레이어 -->
+  <div class="music-bar">
+    <audio id="bg-music" autoplay loop muted>
+      <source src="music/your-music.mp3" type="audio/mpeg" />
+    </audio>
+    <button id="music-btn">🔊</button>
+    <span>🎧 지금 듣는 중...</span>
+  </div>
 
-    <section class="section" data-aos="fade-up">
-      <h2>📌 배우고 있는 언어</h2>
-      <div class="icon-row">
-        <i class="devicon-python-plain colored"></i>
+  <!-- 메인 -->
+  <main class="content">
+    <section class="profile-card" id="about">
+      <img src="images/profile.jpg" class="avatar" alt="최원제 프로필" />
+      <div>
+        <h1>최원제 <span class="cursor">▍</span></h1>
+        <p>Python을 배우고 있고, 음악과 개발을 사랑합니다.</p>
       </div>
     </section>
 
-    <section class="section" data-aos="fade-up">
-      <h2>🌱 배우고 싶은 언어</h2>
-      <div class="icon-row">
+    <section class="card" id="skills">
+      2>현재 배우는 언어</h2>
+      <div class="icons">
+        <i class="devicon-python-plain colored"></i>
+      </div>
+      <h2>관심 있는 언어</h2>
+      <div class="icons">
         <i class="devicon-c-plain colored"></i>
         <i class="devicon-cplusplus-plain colored"></i>
         <i class="devicon-javascript-plain colored"></i>
       </div>
     </section>
 
-    <section class="section about" data-aos="fade-up">
-      <h2>🧠 Who Am I</h2>
-      <p>
-        저는 Python으로 프로그래밍을 배우고 있으며,<br>
-        저만의 리듬으로 문제를 해결하는 것을 좋아합니다.<br>
-        음악을 통해 감정을 표현하고, 코드를 통해 아이디어를 실현합니다.
-      </p>
-    </section>
-  </main>
-
-  <footer data-aos="fade-up">
-    <p>© 2025 최원제 | 개발자 소개 페이지</p>
-  </footer>
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="script.js"></script>
-</body>
-</html>
+    <section class="card" id="contact">
+      <h2>Contact</h2>
+      <p>Email: your@email.com</p>
+      <
