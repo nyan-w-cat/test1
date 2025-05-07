@@ -1,38 +1,69 @@
 body {
-  font-family: 'Fira Code', 'Noto Sans KR', monospace;
+  font-family: 'Noto Sans KR', 'Spoqa Han Sans', 'Malgun Gothic', sans-serif;
   background-color: #0d1117;
   color: #c9d1d9;
-  display: flex;
-  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
+.container {
+  max-width: 600px;
+  margin: 100px auto 120px auto;
+  padding: 24px;
+  background: rgba(24, 28, 36, 0.93);
+  border-radius: 16px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+.profile-pic {
+  margin: 0 auto 24px auto;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.profile-pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* 인트로 애니메이션 */
 .intro {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: #0d1117;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: #0d1117;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  animation: fadeOut 2s ease forwards 2.5s;
+  animation: fadeOut 0.7s ease forwards 2.2s;
 }
 
 .intro-image {
-  width: 300px;
-  height: 300px;
+  width: 300px; height: 300px;
   border-radius: 50%;
-  transition: transform 1.2s ease;
-  animation: introShrink 2s ease forwards 1s;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.4);
+  animation: introZoomMove 2s cubic-bezier(0.4,0,0.2,1) forwards 0.2s;
+  transform-origin: center center;
 }
 
-@keyframes introShrink {
+@keyframes introZoomMove {
   0% {
-    transform: scale(1);
+    transform: scale(1) translate(0, 0);
+    opacity: 1;
+  }
+  40% {
+    transform: scale(2.2) translate(0, 0);
+    opacity: 1;
   }
   100% {
-    transform: scale(0.3);
+    /* 프로필 자리 위치에 맞게 조정 (예: -320px, -180px) */
+    transform: scale(0.4) translate(-320px, -180px);
     opacity: 0;
   }
 }
@@ -42,4 +73,43 @@ body {
     opacity: 0;
     visibility: hidden;
   }
+}
+
+/* 오디오 플레이어 하단 고정 */
+.audio-player {
+  position: fixed;
+  left: 0; bottom: 0;
+  width: 100%;
+  background: #181c24;
+  z-index: 999;
+  padding: 14px 0;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.audio-player button {
+  background: none;
+  border: none;
+  color: #c9d1d9;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.audio-player input[type="range"] {
+  accent-color: #58a6ff;
+  height: 4px;
+  border-radius: 2px;
+  background: #2d333b;
+  margin: 0 8px;
+}
+
+#progress-bar {
+  width: 320px;
+}
+
+#volume-slider {
+  width: 80px;
 }
