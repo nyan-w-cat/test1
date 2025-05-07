@@ -20,7 +20,7 @@
       <img src="profile.jpg" class="profile-thumb" alt="프로필 사진">
       <h1>최원제</h1>
     </div>
-    <p>Python을 배우고 있고, 음악과 개발을 사랑합니다.</p>
+    <p>안녕하세요, 현재 Python을 배우고 있는 대학생입니다.</p>
     <h2>현재 배우는 언어</h2>
     <ul class="lang-list">
       <li><i class="fa-brands fa-python"></i> Python</li>
@@ -37,11 +37,28 @@
       <li>GitHub: <a href="https://github.com/nyan-w-cat/test1" target="_blank">github.com/nyan-w-cat/test1</a></li>
     </ul>
   </main>
-  <div class="audio-player">
-    <button id="play-btn"><i class="fa-solid fa-play"></i></button>
-    <div class="volume-group">
-      <i class="fa-solid fa-volume-up"></i>
-      <input id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.5" title="볼륨">
+  <!-- 스포티파이 스타일 하단바 -->
+  <div class="spotify-bar">
+    <div class="bar-left">
+      <img src="profile.jpg" alt="앨범커버" class="cover">
+      <div class="song-info">
+        <div class="song-title">Welcome</div>
+        <div class="song-artist">최원제</div>
+      </div>
+      <button class="like-btn"><i class="fa-regular fa-heart"></i></button>
+    </div>
+    <div class="bar-center">
+      <div class="player-controls">
+        <button class="ctrl-btn"><i class="fa-solid fa-shuffle"></i></button>
+        <button class="ctrl-btn"><i class="fa-solid fa-backward-step"></i></button>
+        <button class="ctrl-btn play-btn" id="play-btn"><i class="fa-solid fa-play"></i></button>
+        <button class="ctrl-btn"><i class="fa-solid fa-forward-step"></i></button>
+        <button class="ctrl-btn"><i class="fa-solid fa-repeat"></i></button>
+      </div>
+    </div>
+    <div class="bar-right">
+      <i class="fa-solid fa-volume-high"></i>
+      <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5">
     </div>
   </div>
   <audio id="bg-music" src="welcome.mp3"></audio>
