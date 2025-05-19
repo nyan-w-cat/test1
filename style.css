@@ -236,3 +236,69 @@ h1 {
   background: transparent;
   margin-left: 10px;
 }
+.guestbook {
+  margin: 2rem auto;
+  max-width: 600px;
+  padding: 2rem;
+  background: #161b22;
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
+}
+
+.guestbook h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#guestbook-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+#guestbook-form input,
+#guestbook-form textarea {
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  background: #0d1117;
+  color: #c9d1d9;
+  resize: none;
+}
+
+#guestbook-form button {
+  padding: 0.6rem 1rem;
+  background: #238636;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#guestbook-form button:hover {
+  background: #2ea043;
+}
+
+#message-list {
+  margin-top: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+#message-list li {
+  background: #0d1117;
+  margin-bottom: 0.6rem;
+  padding: 0.8rem;
+  border-radius: 8px;
+  border-left: 4px solid #2ea043;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
