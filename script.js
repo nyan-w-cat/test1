@@ -1,4 +1,4 @@
-// 오디오 플레이어
+// 🎵 오디오 플레이어
 const music = document.getElementById("bg-music");
 const playBtn = document.getElementById("play-btn");
 const volumeSlider = document.getElementById("volume-slider");
@@ -31,7 +31,6 @@ volumeSlider.addEventListener("input", (e) => {
   music.volume = e.target.value;
 });
 
-// 진행바 및 시간 표시
 music.addEventListener("timeupdate", () => {
   if (music.duration) {
     const percent = (music.currentTime / music.duration) * 100;
@@ -41,7 +40,6 @@ music.addEventListener("timeupdate", () => {
   }
 });
 
-// 진행바 클릭 시 이동
 progressBar.addEventListener("input", (e) => {
   if (music.duration) {
     music.currentTime = (e.target.value / 100) * music.duration;
@@ -55,15 +53,19 @@ function formatTime(sec) {
   return `${m}:${s < 10 ? '0' : ''}${s}`;
 }
 
-// 인트로 애니메이션 끝나면 intro 숨김
+// 👋 인트로 애니메이션
 window.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     const intro = document.getElementById("intro");
     if (intro) intro.style.display = "none";
   }, 2700);
+
+  // 📝 방명록 메시지 로드
+  const saved = JSON.parse(localStorage.getItem("guestbook")) || [];
+  saved.forEach(addMessageToList);
 });
 
-// 매트릭스 효과 (전체 배경, 소개 영역 제외)
+// 🟩 매트릭스 배경
 const canvas = document.getElementById('matrix-bg');
 if (canvas) {
   function resizeCanvas() {
@@ -97,7 +99,6 @@ if (canvas) {
       const x = i * fontSize;
       const y = drops[i] * fontSize;
 
-      // 중앙 소개 영역과 겹치지 않도록 예외 처리
       const centerStart = (window.innerWidth - 520) / 2;
       const centerEnd = (window.innerWidth + 520) / 2;
       if (x > centerStart && x < centerEnd && y > 80 && y < window.innerHeight - 140) {
@@ -113,4 +114,33 @@ if (canvas) {
     }
   }
   setInterval(drawMatrix, 50);
+}
+
+// 💬 방명록 기능
+const form = document.getElementById("guestbook-form");
+const nameInput = document.getElementById("guest-name");
+const messageInput = document.getElementById("guest-message");
+const messageList = document.getElementById("message-list");
+
+function addMessageToList(entry) {
+  const li = document.createElement("li");
+  li.innerHTML = `<strong>${entry.name}</strong><br/>${entry.message}`;
+  messageList.prepend(li);
+}
+
+if (form) {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = nameInput.value.trim();
+    const message = messageInput.value.trim();
+
+    if (name && message) {
+      const entry = { name, message };
+      const messages = JSON.parse(localStorage.getItem("guestbook")) || [];
+      messages.push(entry);
+      localStorage.setItem("guestbook", JSON.stringify(messages));
+      addMessageToList(entry);
+      form.reset();
+    }
+  });
 }
