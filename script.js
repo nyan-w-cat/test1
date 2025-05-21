@@ -144,3 +144,31 @@ if (form) {
     }
   });
 }
+document.getElementById("guestbook-form").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const name = document.getElementById("guest-name").value.trim();
+  const message = document.getElementById("guest-message").value.trim();
+
+  if (!name || !message) return;
+
+  const entry = { name, message, timestamp: new Date().toLocaleString() };
+  const entries = JSON.parse(localStorage.getItem("guestbookEntries") || "[]");
+  entries.push(entry);
+  localStorage.setItem("guestbookEntries", JSON.stringify(entries));
+
+  appendMessage(entry);
+  this.reset();
+});
+
+function appendMessage(entry) {
+  const li = document.createElement("li");
+  li.innerHTML = `<strong>${entry.name}</strong> (${entry.timestamp}):<br>${entry.message}`;
+  document.getElementById("message-list").appendChild(li);
+}
+
+function loadMessages() {
+  const entries = JSON.parse(localStorage.getItem("guestbookEntries") || "[]");
+  entries.forEach(appendMessage);
+}
+
+window.addEventListener("DOMContentLoaded", loadMessages);
