@@ -172,3 +172,51 @@ function loadMessages() {
 }
 
 window.addEventListener("DOMContentLoaded", loadMessages);
+
+function revealOnScroll() {
+  const hiddenElements = document.querySelectorAll('.hidden-on-load');
+  const windowHeight = window.innerHeight;
+
+  hiddenElements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < windowHeight - 100) {
+      el.classList.add('fade-in-visible');
+    }
+  });
+}
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('DOMContentLoaded', revealOnScroll);
+
+document.addEventListener('DOMContentLoaded', function () {
+  const form = document.getElementById('guestbook-form');
+  const nameInput = document.getElementById('guest-name');
+  const messageInput = document.getElementById('guest-message');
+  const messageList = document.getElementById('message-list');
+
+  // 저장된 메시지 불러오기
+  const savedMessages = JSON.parse(localStorage.getItem('guestbookMessages')) || [];
+  savedMessages.forEach(addMessageToList);
+
+  // 폼 제출 시 처리
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name = nameInput.value.trim();
+    const message = messageInput.value.trim();
+    if (!name || !message) return;
+
+    const newMessage = { name, message };
+    savedMessages.push(newMessage);
+    localStorage.setItem('guestbookMessages', JSON.stringify(savedMessages));
+    addMessageToList(newMessage);
+
+    form.reset();
+  });
+
+  // 메시지를 리스트에 추가하는 함수
+  function addMessageToList({ name, message }) {
+    const li = document.createElement('li');
+    li.innerHTML = `<strong>${name}</strong>: ${message}`;
+    messageList.appendChild(li);
+  }
+});
