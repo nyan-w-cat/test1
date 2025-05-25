@@ -220,3 +220,24 @@ document.addEventListener('DOMContentLoaded', function () {
     messageList.appendChild(li);
   }
 });
+const likeBtn = document.querySelector('.like-btn');
+const videoWrap = document.getElementById('easter-egg-video');
+const video = document.getElementById('egg-video');
+const closeBtn = document.getElementById('close-video');
+
+let eggShown = false;
+
+likeBtn.addEventListener('click', () => {
+  if (!eggShown) {
+    videoWrap.classList.remove('hidden');
+    video.play();
+    eggShown = true;
+  }
+});
+
+closeBtn.addEventListener('click', () => {
+  video.pause();
+  video.currentTime = 0;
+  videoWrap.classList.add('hidden');
+});
+
