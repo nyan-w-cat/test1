@@ -5,17 +5,230 @@
   <title>최원제</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #0d1117;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .intro {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: #0d1117;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .intro-image {
+      width: 200px;
+      border-radius: 50%;
+      animation: fadeOut 2.5s ease-out forwards;
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(1.2); }
+    }
+
+    canvas#matrix-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    main.center-block {
+      max-width: 600px;
+      margin: 100px auto 50px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      padding: 20px;
+    }
+
+    .profile-row {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .profile-thumb {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+    }
+
+    .lang-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .lang-list li {
+      margin: 5px 0;
+    }
+
+    .spotify-bar {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #1c1f26;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      z-index: 2;
+    }
+
+    .bar-left, .bar-center, .bar-right {
+      display: flex;
+      align-items: center;
+    }
+
+    .bar-left {
+      gap: 10px;
+    }
+
+    .bar-left .cover {
+      width: 50px;
+      height: 50px;
+      border-radius: 5px;
+    }
+
+    .like-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .player-controls button {
+      background: none;
+      border: none;
+      color: #fff;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+
+    .progress-wrap {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-left: 10px;
+    }
+
+    #progress-bar {
+      width: 200px;
+    }
+
+    .bar-right {
+      gap: 10px;
+    }
+
+    .guestbook {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .guestbook input, .guestbook textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .guestbook button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background: #58ff58;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .guestbook ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    #easter-egg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      flex-direction: column;
+    }
+
+    #easter-egg-video.hidden {
+      display: none;
+    }
+
+    #egg-video {
+      max-width: 90%;
+      max-height: 80%;
+    }
+
+    #close-video {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      background: red;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* 스크롤 애니메이션 */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 <body>
-  <!-- 인트로 애니메이션 -->
+
+  <!-- 인트로 -->
   <div class="intro" id="intro">
-    <img class="intro-image" src="profile.jpg" alt="프로필 사진">
+    <img src="profile.jpg" alt="프로필 사진" class="intro-image">
   </div>
-  <!-- 매트릭스 애니메이션 배경 -->
+
+  <!-- 배경 -->
   <canvas id="matrix-bg"></canvas>
-  <!-- 중앙 소개 영역 -->
-  <main class="center-block">
+
+  <!-- 소개 -->
+  <main class="center-block reveal">
     <div class="profile-row">
       <img src="profile.jpg" class="profile-thumb" alt="프로필 사진">
       <h1>최원제</h1>
@@ -37,7 +250,19 @@
       <li>GitHub: <a href="https://github.com/nyan-w-cat" target="_blank">github.com/nyan-w-cat</a></li>
     </ul>
   </main>
-  <!-- 스포티파이 스타일 하단바 -->
+
+  <!-- 방명록 -->
+  <section class="guestbook reveal" id="guestbook">
+    <h2>📝 방명록</h2>
+    <form id="guestbook-form">
+      <input type="text" id="guest-name" placeholder="이름" required />
+      <textarea id="guest-message" placeholder="응원의 메시지를 남겨주세요!" required></textarea>
+      <button type="submit">남기기</button>
+    </form>
+    <ul id="message-list"></ul>
+  </section>
+
+  <!-- 음악 컨트롤 바 -->
   <div class="spotify-bar">
     <div class="bar-left">
       <img src="profile.jpg" alt="앨범커버" class="cover">
@@ -51,7 +276,7 @@
       <div class="player-controls">
         <button class="ctrl-btn"><i class="fa-solid fa-shuffle"></i></button>
         <button class="ctrl-btn"><i class="fa-solid fa-backward-step"></i></button>
-        <button class="ctrl-btn play-btn" id="play-btn"><i class="fa-solid fa-play"></i></button>
+        <button class="ctrl-btn" id="play-btn"><i class="fa-solid fa-play"></i></button>
         <button class="ctrl-btn"><i class="fa-solid fa-forward-step"></i></button>
         <button class="ctrl-btn"><i class="fa-solid fa-repeat"></i></button>
       </div>
@@ -66,30 +291,158 @@
       <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5">
     </div>
   </div>
+
+  <!-- 오디오 -->
   <audio id="bg-music" src="welcome.mp3"></audio>
-  <script src="script.js"></script>
-  <section class="guestbook" id="guestbook">
-  <h2>📝 방명록</h2>
-  <form id="guestbook-form">
-    <input type="text" id="guest-name" placeholder="이름" required />
-    <textarea id="guest-message" placeholder="응원의 메시지를 남겨주세요!" required></textarea>
-    <button type="submit">남기기</button>
-  </form>
-  <ul id="message-list"></ul>
-</section>
-  <!-- 방명록 섹션 -->
-<section class="guestbook hidden-on-load" id="guestbook">
-  <h2>📝 방명록</h2>
-  <form id="guestbook-form">
-    <input type="text" id="guest-name" placeholder="이름" required />
-    <textarea id="guest-message" placeholder="응원의 메시지를 남겨주세요!" required></textarea>
-    <button type="submit">남기기</button>
-  </form>
-  <ul id="message-list"></ul>
-</section>
+
+  <!-- 이스터에그 영상 -->
   <div id="easter-egg-video" class="hidden">
-  <video id="egg-video" src="easter.mp4" controls></video>
-  <button id="close-video">X</button>
+    <video id="egg-video" src="easter.mp4" controls></video>
+    <button id="close-video">X</button>
   </div>
+
+  <!-- 스크립트 -->
+  <script>
+    // 🎵 오디오 컨트롤
+    const audio = document.getElementById('bg-music');
+    const playBtn = document.getElementById('play-btn');
+    const progressBar = document.getElementById('progress-bar');
+    const currentTimeEl = document.getElementById('current-time');
+    const totalTimeEl = document.getElementById('total-time');
+    const volumeSlider = document.getElementById('volume-slider');
+
+    playBtn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+      } else {
+        audio.pause();
+        playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+      }
+    });
+
+    audio.addEventListener('timeupdate', () => {
+      const progress = (audio.currentTime / audio.duration) * 100;
+      progressBar.value = progress || 0;
+      currentTimeEl.textContent = formatTime(audio.currentTime);
+      totalTimeEl.textContent = formatTime(audio.duration);
+    });
+
+    progressBar.addEventListener('input', () => {
+      const time = (progressBar.value / 100) * audio.duration;
+      audio.currentTime = time;
+    });
+
+    volumeSlider.addEventListener('input', () => {
+      audio.volume = volumeSlider.value;
+    });
+
+    function formatTime(seconds) {
+      const m = Math.floor(seconds / 60);
+      const s = Math.floor(seconds % 60).toString().padStart(2, '0');
+      return `${m}:${s}`;
+    }
+
+    // 방명록
+    document.getElementById('guestbook-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('guest-name').value.trim();
+      const message = document.getElementById('guest-message').value.trim();
+      if (!name || !message) return;
+      const li = document.createElement('li');
+      li.innerHTML = `<strong>${name}</strong>: ${message}`;
+      document.getElementById('message-list').appendChild(li);
+      this.reset();
+    });
+
+    // 이스터에그
+    const likeBtn = document.querySelector('.like-btn');
+    const eggVideoContainer = document.getElementById('easter-egg-video');
+    const eggVideo = document.getElementById('egg-video');
+    const closeVideo = document.getElementById('close-video');
+
+    likeBtn.addEventListener('click', () => {
+      eggVideoContainer.classList.remove('hidden');
+      eggVideo.play();
+    });
+
+    closeVideo.addEventListener('click', () => {
+      eggVideo.pause();
+      eggVideo.currentTime = 0;
+      eggVideoContainer.classList.add('hidden');
+    });
+
+    // 스크롤 애니메이션
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // 인트로 제거
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        const intro = document.getElementById('intro');
+        if (intro) intro.style.display = 'none';
+      }, 2700);
+    });
+
+    // 매트릭스 효과
+    const canvas = document.getElementById('matrix-bg');
+    if (canvas) {
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
+      const ctx = canvas.getContext('2d');
+      const alphabet = '01';
+      let fontSize = 22;
+      let columns, drops;
+
+      function setupMatrix() {
+        fontSize = Math.max(18, Math.floor(window.innerWidth / 70));
+        columns = Math.floor(window.innerWidth / fontSize);
+        drops = Array(columns).fill(1);
+      }
+      setupMatrix();
+      window.addEventListener('resize', setupMatrix);
+
+      function drawMatrix() {
+        ctx.fillStyle = 'rgba(13, 17, 23, 0.13)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.font = fontSize + "px 'Fira Code', monospace";
+        ctx.fillStyle = "#58ff58";
+        for (let i = 0; i < drops.length; i++) {
+          const text = alphabet[Math.floor(Math.random() * alphabet.length)];
+          const x = i * fontSize;
+          const y = drops[i] * fontSize;
+
+          const centerStart = (window.innerWidth - 520) / 2;
+          const centerEnd = (window.innerWidth + 520) / 2;
+          if (x > centerStart && x < centerEnd && y > 80 && y < window.innerHeight - 140) {
+            // 중앙 블록 위는 그리지 않음
+          } else {
+            ctx.fillText(text, x, y);
+          }
+
+          if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+          }
+          drops[i]++;
+        }
+      }
+      setInterval(drawMatrix, 50);
+    }
+  </script>
 </body>
 </html>
